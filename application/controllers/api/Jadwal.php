@@ -48,7 +48,11 @@ class Jadwal extends REST_Controller {
     }
 
     public function listroom_post(){
+        header('Content-type: application/json');
         header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET,POST");
+        header("Access-Control-Allow-Methods: GET, OPTIONS, POST");
+        header("Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding");
         $rooms["success"] = 1;
         $rooms["message"] = "success show list all rooms";
         $roomsData = $this->Mjadwal->getRooms();
