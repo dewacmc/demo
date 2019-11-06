@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class JadwalModel extends CI_Model
 {
-  public $jadwal = 'cmc_jadwal';
+  public $room = 'cmc_room';
   public $cabang = 'cmc_cabang';
 
   public function __construct()
@@ -14,7 +14,7 @@ class JadwalModel extends CI_Model
 
   public function getRooms(){
     $this->db->select('A.name, A.color, B.nama');
-    $this->db->from("{$this->jadwal} A");
+    $this->db->from("{$this->room} A");
     $this->db->join("{$this->cabang} B", 'A.idcab = B.id');
     $query = $this->db->get();
     return $query->result();
