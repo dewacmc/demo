@@ -25,7 +25,7 @@ class Jadwal extends REST_Controller {
     {
         parent::__construct();
         $this->methods['insertjadwal_post']['limit'] = 100; // 100 requests per hour per user/key
-        $this->load->model("api/JadwalModel","Mjadwal");
+        $this->load->model("api/Jadwalmodel","Mjadwal");
        
     }
 
@@ -39,6 +39,18 @@ class Jadwal extends REST_Controller {
                 $jadwal["success"] = 0;
             $jadwal["data"] = $jadwalData;
             $this->response($jadwal, REST_Controller::HTTP_OK);
+    }
+
+    public function listroom_post(){
+        header("Access-Control-Allow-Origin: *");
+        $rooms["success"] = 1;
+        $rooms["message"] = "success show list all rooms";
+        $roomsData = $this->Mjadwal->getRooms();
+        if (count($roomsData) == 0) 
+            $rooms["message"] = "Tidak ada data Ruangan untuk saat ini";
+            $rooms["success"] = 0;
+        $rooms["data"] = $roomsData;
+        $this->response($rooms, REST_Controller::HTTP_OK);
     }
 
 }
