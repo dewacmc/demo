@@ -26,7 +26,7 @@ class Jadwal extends REST_Controller {
     {
         parent::__construct();
         $this->methods['insertjadwal_post']['limit'] = 100; // 100 requests per hour per user/key
-        $this->load->model("api/Jadwalmodel","Mjadwal");
+        $this->load->model("Jadwalmodel","Mjadwal");
        
     }
 
