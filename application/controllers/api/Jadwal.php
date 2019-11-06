@@ -31,7 +31,12 @@ class Jadwal extends REST_Controller {
     }
 
     public function listjadwal_post(){
+        header('Content-type: application/json');
         header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET,POST");
+        header("Access-Control-Allow-Methods: GET, OPTIONS, POST");
+        header("Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding");
+        
             $jadwal["success"] = 1;
             $jadwal["message"] = "success show list all banners";
             $jadwalData = $this->Mjadwal->getAll();
