@@ -26,7 +26,7 @@ class JadwalModel extends CI_Model
   }
 
   public function getAll(){
-    $this->db->select('A.id, A.start, A.end, A.jenis, E.nama, G.nama, D.nama, D.color, F.tgldaftar, F.nama');
+    $this->db->select('A.id, A.start, A.end, A.jenis, E.nama, G.nama, D.name, D.color, F.tgldaftar, F.nama');
     $this->db->from("{$this->jadwal_h} A");
     $this->db->join("{$this->jadwal_d} B", 'A.id = B.id');
     $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
