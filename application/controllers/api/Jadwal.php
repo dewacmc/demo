@@ -53,14 +53,18 @@ class Jadwal extends REST_Controller {
         header("Access-Control-Allow-Methods: GET,POST");
         header("Access-Control-Allow-Methods: GET, OPTIONS, POST");
         header("Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding");
-        $rooms["success"] = 1;
-        $rooms["message"] = "success show list all rooms";
+        
         $roomsData = $this->Mjadwal->getRooms();
-        if (count($roomsData) == 0) 
+        if (count($roomsData) == 0) {
             $rooms["message"] = "Tidak ada data Ruangan untuk saat ini";
             $rooms["success"] = 0;
-        $rooms["data"] = $roomsData;
+        }else{
+            $rooms["success"] = 1;
+            $rooms["message"] = "success show list all rooms";
+        }
+            $rooms["data"] = $roomsData;
         $this->response($rooms, REST_Controller::HTTP_OK);
+
     }
 
 }
