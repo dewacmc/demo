@@ -30,7 +30,7 @@ class JadwalModel extends CI_Model
     $this->db->from("{$this->jadwal_h} A");
     $this->db->join("{$this->jadwal_d} B", 'A.id = B.id');
     $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
-    $this->db->join("{$this->room} D", 'A.idroom = D.id');
+    $this->db->join("{$this->room} D", 'A.idroom = D.idroom');
     $this->db->join("{$this->cabang} E", 'A.idcab = E.id');
     $this->db->join("{$this->client} F", 'B.iduser = F.id');
     $this->db->join("{$this->terapis} G", 'C.idterapis = G.id');
