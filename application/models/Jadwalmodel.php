@@ -7,7 +7,9 @@ class JadwalModel extends CI_Model
   public $cabang = 'cmc_cabang';
   public $terapis='cmc_terapis';
   public $client= 'cmc_client';
-  public $jadwal= 'cmc_jadwal';
+  public $jadwal_h= 'cmc_jadwal_h';
+  public $jadwal_d= 'cmc_jadwal_d';
+  public $jadwal_d1= 'cmc_jadwal_d1';
 
   public function __construct()
   {
@@ -24,14 +26,15 @@ class JadwalModel extends CI_Model
   }
 
   public function getAll(){
-    $this->db->select('A.id, A.title, A.start, A.end, A.descp, B.name, B.color, C.nama, D.nama, D.tgldaftar, E.nama');
-    $this->db->from("{$this->jadwal} A");
-    $this->db->join("{$this->room} B", 'A.idroom = B.idroom');
-    $this->db->join("{$this->terapis} C", 'A.idterapis = C.id');
-    $this->db->join("{$this->client} D", 'A.idclient = D.id');
+    $this->db->select('A.id, A.start, A.end, A.jenis, E.nama, G.nama, D.nama, D.color, F.tgldaftar, F.nama');
+    $this->db->from("{$this->jadwal_h} A");
+    $this->db->join("{$this->jadwal_d} B", 'A.id = B.id');
+    $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
+    $this->db->join("{$this->room} D", 'A.idroom = D.id');
     $this->db->join("{$this->cabang} E", 'A.idcab = E.id');
+    $this->db->join("{$this->client} F", 'B.iduser = F.id');
+    $this->db->join("{$this->terapis} G", 'C.idterapis = G.id');
     $query = $this->db->get();
     return $query->result();
   }
-
 }
