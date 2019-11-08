@@ -76,7 +76,7 @@ class Jadwal extends REST_Controller {
         $data1 = $this->post("data2");
             echo "<pre>";
             print_r($data1);
-            print_r($data2);
+            // print_r($data2);
             echo "<pre>";
     }
 
