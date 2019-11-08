@@ -71,4 +71,13 @@ class Jadwal extends REST_Controller {
 
     }
 
+    public function testing_post(){
+        $data1 = $this->post("data1");
+        $data1 = $this->post("data2");
+            echo "<pre>";
+            print_r($data1);
+            print_r($data2);
+            echo "<pre>";
+    }
+
 }
