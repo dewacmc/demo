@@ -37,4 +37,29 @@ class JadwalModel extends CI_Model
     $query = $this->db->get();
     return $query->result();
   }
+
+  public function getFiter($terapis,$cabang,$room){
+    $this->db->select('A.id, CONCAT(G.nama,": ",F.nama,"- " ,D.name,"- ",E.nama ) AS title,A.start, A.end, A.jenis, E.nama as cabang, G.nama as terapis, D.name as room, D.color, F.tgldaftar, F.nama');
+    $this->db->from("{$this->jadwal_h} A");
+    $this->db->join("{$this->jadwal_d} B", 'A.id = B.id');
+    $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
+    $this->db->join("{$this->room} D", 'A.idroom = D.idroom');
+    $this->db->join("{$this->cabang} E", 'A.idcab = E.id');
+    $this->db->join("{$this->client} F", 'B.iduser = F.id');
+    $this->db->join("{$this->terapis} G", 'C.idterapis = G.id');
+    if(is_array($terapis) && count($terapis) > 0){
+      $this->db->where_in('G.nama', $terapis );
+    }
+
+    if(is_array($cabang) && count($cabang) > 0){
+      $this->db->where_in('E.nama', $cabang );
+    }
+
+    if(is_array($room) && count($room) > 0){
+     $this->db->where_in('D.name', $room);
+    }
+    
+    $query = $this->db->get();
+    return $query->result();
+  }
 }
