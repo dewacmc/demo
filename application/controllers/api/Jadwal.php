@@ -75,21 +75,20 @@ class Jadwal extends REST_Controller {
         $terapis = $this->post("terapis");
         $cabang = $this->post("cabang");
         $room = $this->post("room");
-            // echo "<pre>";
-            // print_r($data1);
-            // print_r($data2);
-            // echo "<pre>";
+            echo "<pre>";
+            print_r($cabang);
+            echo "<pre>";
 
-        // $filterdata = $this->Mjadwal->getFiter($terapis,$cabang,$room);
-        // if (count($filterdata) == 0) {
-        //     $filters["message"] = "Tidak ada data Ruangan untuk saat ini";
-        //     $filters["success"] = 0;
-        // }else{
-        //     $filters["success"] = 1;
-        //     $filters["message"] = "success show list all rooms";
-        // }
-        //     $filters["data"] = $filterdata;
-        $this->response($cabang, REST_Controller::HTTP_OK);
+        $filterdata = $this->Mjadwal->getFiter($terapis,$cabang,$room);
+        if (count($filterdata) == 0) {
+            $filters["message"] = "Tidak ada data Ruangan untuk saat ini";
+            $filters["success"] = 0;
+        }else{
+            $filters["success"] = 1;
+            $filters["message"] = "success show list all rooms";
+        }
+            $filters["data"] = $filterdata;
+        $this->response($filters, REST_Controller::HTTP_OK);
     }
 
 }
