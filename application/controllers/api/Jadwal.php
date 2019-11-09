@@ -75,9 +75,9 @@ class Jadwal extends REST_Controller {
         $terapis = $this->post("terapis");
         $cabang = $this->post("cabang");
         $room = $this->post("room");
-            echo "<pre>";
-            print_r($cabang);
-            echo "<pre>";
+            // echo "<pre>";
+            // print_r($cabang);
+            // echo "<pre>";
 
         $filterdata = $this->Mjadwal->getFiter($terapis,$cabang,$room);
         if (count($filterdata) == 0) {
