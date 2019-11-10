@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = "http://democmclearningcom-over.cloud.revoluz.io";
+$config['base_url'] = "https://cmclearningtree.com/api/";
 
 /*
 |--------------------------------------------------------------------------
