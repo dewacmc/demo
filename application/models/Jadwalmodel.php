@@ -58,7 +58,7 @@ class JadwalModel extends CI_Model
     if(is_array($room) && count($room) > 0){
      $this->db->where_in('D.name', $room);
     }
-    $this->db->where('month(A.tgl)',date('m'));
+    $this->db->where('month(A.start)',date('m'));
     $query = $this->db->get();
     return $query->result();
   }
