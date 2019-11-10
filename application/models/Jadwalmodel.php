@@ -65,7 +65,7 @@ class JadwalModel extends CI_Model
   }
 
   public function getRooms(){
-    $this->db->select('A.name,A.color');
+    $this->db->select('A.id,A.name,A.color');
     $this->db->from("{$this->room} A");
     $query = $this->db->get();
     return $query->result();
