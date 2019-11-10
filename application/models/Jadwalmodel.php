@@ -17,13 +17,7 @@ class JadwalModel extends CI_Model
     $this->load->database();
   }
 
-  public function getRooms(){
-    $this->db->select('A.name,A.color,B.nama');
-    $this->db->from("{$this->room} A");
-    $this->db->join("{$this->cabang} B", 'A.idcab = B.id');
-    $query = $this->db->get();
-    return $query->result();
-  }
+ 
 
   public function getAll(){
     $this->db->select('A.id, CONCAT(G.nama,": ",F.nama,"- " ,D.name,"- ",E.nama ) AS title,A.start, A.end, A.jenis, E.nama as cabang, G.nama as terapis, D.name as room, D.color, F.tgldaftar, F.nama');
@@ -59,6 +53,27 @@ class JadwalModel extends CI_Model
      $this->db->where_in('D.name', $room);
     }
     $this->db->where('month(A.start)',date('m'));
+    $query = $this->db->get();
+    return $query->result();
+  }
+
+  public function getcabang(){
+    $this->db->select('A.id,A.nama');
+    $this->db->from("{$this->cabang} A");
+    $query = $this->db->get();
+    return $query->result();
+  }
+
+  public function getRooms(){
+    $this->db->select('A.name,A.color');
+    $this->db->from("{$this->room} A");
+    $query = $this->db->get();
+    return $query->result();
+  }
+
+  public function getterapis(){
+    $this->db->select('A.id,A.nama');
+    $this->db->from("{$this->terapis} A");
     $query = $this->db->get();
     return $query->result();
   }

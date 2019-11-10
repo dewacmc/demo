@@ -63,3 +63,6 @@ $route['api/example/users/(:num)(\.)([a-zA-Z0-9_-]+)(.*)'] = 'api/example/users/
 
 $route['rooms/list']['post']='api/jadwal/listroom/';
 $route['jadwal/list']['post']='api/jadwal/listjadwal/';
+$route['jadwal/filter']['post']='api/jadwal/testing/';
+$route['jadwal/cabang']['post']='api/jadwal/cabanglist/';
+$route['jadwal/terapis']['post']='api/jadwal/terapislist/';

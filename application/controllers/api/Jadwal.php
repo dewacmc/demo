@@ -91,4 +91,30 @@ class Jadwal extends REST_Controller {
         $this->response($filters, REST_Controller::HTTP_OK);
     }
 
+    public function cabanglist_post(){
+        $filterdata = $this->Mjadwal->getcabang();
+        if (count($filterdata) == 0) {
+            $filters["message"] = "Tidak ada data Ruangan untuk saat ini";
+            $filters["success"] = 0;
+        }else{
+            $filters["success"] = 1;
+            $filters["message"] = "success show list all rooms";
+        }
+            $filters["data"] = $filterdata;
+        $this->response($filters, REST_Controller::HTTP_OK);
+    }
+
+    public function terapislist_post(){
+        $filterdata = $this->Mjadwal->getterapis();
+        if (count($filterdata) == 0) {
+            $filters["message"] = "Tidak ada data Ruangan untuk saat ini";
+            $filters["success"] = 0;
+        }else{
+            $filters["success"] = 1;
+            $filters["message"] = "success show list all rooms";
+        }
+            $filters["data"] = $filterdata;
+        $this->response($filters, REST_Controller::HTTP_OK);
+    }
+
 }
