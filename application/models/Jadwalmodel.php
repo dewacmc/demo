@@ -42,15 +42,15 @@ class JadwalModel extends CI_Model
     $this->db->join("{$this->client} F", 'B.iduser = F.id');
     $this->db->join("{$this->terapis} G", 'C.idterapis = G.id');
     if(is_array($terapis) && count($terapis) > 0){
-      $this->db->where_in('G.nama', $terapis );
+      $this->db->where_in('G.id', $terapis );
     }
 
     if(is_array($cabang) && count($cabang) > 0){
-      $this->db->where_in('E.nama', $cabang );
+      $this->db->where_in('E.id', $cabang );
     }
 
     if(is_array($room) && count($room) > 0){
-     $this->db->where_in('D.name', $room);
+     $this->db->where_in('D.idroom', $room);
     }
     $this->db->where('month(A.start)',date('m'));
     $query = $this->db->get();
