@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class JadwalModel extends CI_Model
+class LoginModel extends CI_Model
 {
   public $room = 'cmc_room';
   public $cabang = 'cmc_cabang';
