@@ -13,7 +13,7 @@ class Login extends REST_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model("LoginModel","Mlogin");
+        $this->load->model("Loginmodel","Mlogin");
        
     }
     public function ceklogin_post(){
