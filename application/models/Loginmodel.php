@@ -23,6 +23,9 @@ class LoginModel extends CI_Model
     $this->db->where('A.email', $loginid );
     $this->db->where('A.pasw', md5($loginpasw) );
     $query = $this->db->get();
+            echo "<pre>";
+             print_r(md5($loginpasw));
+             echo "<pre>";
     return $query->result();
   }
 }
