@@ -18,7 +18,7 @@ class LoginModel extends CI_Model
   }
 
   public function getLogin($loginid,$loginpasw){
-    $this->db->select('A.id,A.nama,A.notel,A.email,A.dep,A.pasw');
+    $this->db->select('A.id,A.nama,A.notel,A.email,A.dep');
     $this->db->from("{$this->terapis} A");
     $this->db->where('A.email', $loginid );
     $this->db->where('A.pasw', md5($loginpasw) );
