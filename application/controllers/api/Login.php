@@ -47,7 +47,7 @@ class Login extends REST_Controller {
         }else{
             $data = array(
                 "nama" => $nama,
-                "notel"  => $prov,
+                "notel"  => $notel,
                 "email" => $email,
                 "gooleid" => $googleid,
                 );
