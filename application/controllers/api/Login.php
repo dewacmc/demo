@@ -17,9 +17,8 @@ class Login extends REST_Controller {
        
     }
     public function ceklogin_post(){
-        $loginid = $this->post("email");
-        $loginpasw = $this->post("pasw");
-        $roomsData = $this->Mlogin->getLogin($loginid,$loginpasw);
+        $loginid = $this->post("googleid");
+        $roomsData = $this->Mlogin->getLogin($loginid);
         if (count($roomsData) == 0) {
             $rooms["message"] = "Check Your Username or Password";
             $rooms["success"] = 0;

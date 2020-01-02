@@ -17,11 +17,10 @@ class LoginModel extends CI_Model
     $this->load->database();
   }
 
-  public function getLogin($loginid,$loginpasw){
+  public function getLogin($loginid){
     $this->db->select('A.id,A.nama,A.notel,A.email,A.dep');
     $this->db->from("{$this->terapis} A");
-    $this->db->where('A.email', $loginid );
-    $this->db->where('A.pasw', md5($loginpasw) );
+    $this->db->where('A.googleid', $loginid );
     $query = $this->db->get();
             // echo "<pre>";
             //  print_r(md5($loginpasw));
