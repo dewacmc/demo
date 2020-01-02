@@ -31,4 +31,40 @@ class Login extends REST_Controller {
         $this->response($rooms, REST_Controller::HTTP_OK);
 
     }
+
+    public function newregis_post(){
+        $nama = $this->post("nama");
+        $notel = $this->post("notel");
+        $email = $this->post("email");
+        $googleid = $this->post("gooleid");
+            // echo "<pre>";
+            // print_r($cabang);
+            // echo "<pre>";
+        if ($nama == "" || $googleid == "" || $email == "" ) {
+            $resp["success"] = 0;
+            $resp["message"] = "All field is required";
+            $this->response($resp, REST_Controller::HTTP_OK);
+        }else{
+            $data = array(
+                "nama" => $nama,
+                "notel"  => $prov,
+                "email" => $email,
+                "gooleid" => $googleid,
+                );
+                //tidak perlu cek email / googleid karena di firebase google sudah dicek tidak mungkin double
+                //lgs masuk ke database aja 
+                $filterdata = $this->Mlogin->registerterapis($data);
+                if ($filterdata) {
+                    $filters["success"] = 1;
+                    $filters["message"] = "success Daftar Baru";
+                }else{
+
+                    $filters["message"] = "Error Daftar Baru";
+                    $filters["success"] = 0;
+                }
+                $this->response($filters, REST_Controller::HTTP_OK);
+                
+        }
+
+    }
 }

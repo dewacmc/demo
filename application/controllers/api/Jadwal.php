@@ -52,7 +52,7 @@ class Jadwal extends REST_Controller {
     }
 
     public function listjadwalterapis_post(){
-        $idtrp = $this->post("idterapis");
+            $idtrp = $this->post("idterapis");
             $jadwalData = $this->Mjadwal->getAllterapis($idtrp);
             if (count($jadwalData) == 0) {
                 $jadwal["message"] = "Tidak ada banner aktif untuk saat ini";

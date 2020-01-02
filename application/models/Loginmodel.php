@@ -28,4 +28,9 @@ class LoginModel extends CI_Model
             //  echo "<pre>";
     return $query->result();
   }
+
+
+  public function registerterapis($data){
+    return $this->db->insert($this->terapis, $data);
+  }
 }
