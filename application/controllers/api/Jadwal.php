@@ -51,6 +51,21 @@ class Jadwal extends REST_Controller {
             $this->response($jadwal, REST_Controller::HTTP_OK);
     }
 
+    public function listjadwalterapis_post(){
+            
+            $jadwalData = $this->Mjadwal->getAllterapis();
+            if (count($jadwalData) == 0) {
+                $jadwal["message"] = "Tidak ada banner aktif untuk saat ini";
+                $jadwal["success"] = 0;
+            }else{
+                $jadwal["success"] = 1;
+                $jadwal["message"] = "success show list all banners";
+            }
+               
+            $jadwal["data"] = $jadwalData;
+            $this->response($jadwal, REST_Controller::HTTP_OK);
+    }
+
     public function listroom_post(){
         // header('Content-type: application/json');
         // header("Access-Control-Allow-Origin: *");
