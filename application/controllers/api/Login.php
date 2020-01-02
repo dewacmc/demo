@@ -49,7 +49,7 @@ class Login extends REST_Controller {
                 "nama" => $nama,
                 "notel"  => $notel,
                 "email" => $email,
-                "gooleid" => $googleid,
+                "googleid" => $googleid,
                 );
                 //tidak perlu cek email / googleid karena di firebase google sudah dicek tidak mungkin double
                 //lgs masuk ke database aja 
