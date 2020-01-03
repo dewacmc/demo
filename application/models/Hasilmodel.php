@@ -56,6 +56,6 @@ class HasilModel extends CI_Model
   public function absendata($idjadwal,$iduser,$data){
     $this->db->where('id', $idjadwal);
     $this->db->where('iduser', $iduser);
-    return $this->db->update($this->jadwal_d1,$data);
+    return $this->db->update($this->jadwal_d,$data);
   }
 }
