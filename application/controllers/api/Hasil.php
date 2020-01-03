@@ -40,4 +40,22 @@ class Hasil extends REST_Controller {
             $jadwal["pasien"] = $listpasien;
             $this->response($jadwal, REST_Controller::HTTP_OK);
     }
+
+    public function userhadir_post(){
+            $idjw = $this->post("idjadwal");
+            $iduser= $this->post("iduser");
+            $hadir= $this->post("hadir");
+            $data = array(
+                "hdr" => $hadir,
+              );
+              $hasilhadir = $this->MHasil->absendata($idjw,$iduser,$data);
+            if($hasilhadir){
+                $jadwal["success"] = 1;
+                $jadwal["message"] = "success update Absen";
+            }else{
+                $jadwal["message"] = "Error Update Absen";
+                $jadwal["success"] = 0;
+            }
+            $this->response($jadwal, REST_Controller::HTTP_OK);
+    }
 }
