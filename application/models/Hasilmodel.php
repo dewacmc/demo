@@ -12,13 +12,7 @@ class HasilModel extends CI_Model
   public $jadwal_d1= 'cmc_jadwal_d1';
 
   public function __construct()
-    public $room = 'cmc_room';
-    public $cabang = 'cmc_cabang';
-    public $terapis='cmc_terapis';
-    public $client= 'cmc_client';
-    public $jadwal_h= 'cmc_jadwal_h';
-    public $jadwal_d= 'cmc_jadwal_d';
-    public $jadwal_d1= 'cmc_jadwal_d1';
+
   {
     parent::__construct();
     $this->load->database();
