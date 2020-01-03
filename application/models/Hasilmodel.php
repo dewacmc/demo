@@ -36,6 +36,7 @@ class HasilModel extends CI_Model
     $this->db->join("{$this->order} H", 'B.idord = H.idord');
     $this->db->join("{$this->product} I", 'H.idprod = I.idprod');
     $this->db->where('A.id', $idjadwal);
+    $this->db->where('G.google.id', $idterapis);
     $this->db->group_by(array("id","product","room","cabang","start","end","terapis"));
 
     // $this->db->where('A.start BETWEEN "'. date('Y-m-d', strtotime($first)). '" and "'. date('Y-m-d', strtotime($last)).'"');
