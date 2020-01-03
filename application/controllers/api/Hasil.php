@@ -17,7 +17,7 @@ class Hasil extends REST_Controller {
        
     }
 
-    public function getalldata(){
+    public function getalldata_post(){
             $idtrp = $this->post("idjadwal");
             $jadwalData = $this->Mjadwal->getAlldata($idtrp);
             if (count($jadwalData) == 0) {
