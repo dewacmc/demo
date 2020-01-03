@@ -19,7 +19,7 @@ class Hasil extends REST_Controller {
 
     public function getalldata_post(){
             $idtrp = $this->post("idjadwal");
-            $jadwalData = $this->Mjadwal->getAlldata($idtrp);
+            $jadwalData = $this->MHasil->getAlldata($idtrp);
             if (count($jadwalData) == 0) {
                 $jadwal["message"] = "Id Jadwal Tidak ditemukan";
                 $jadwal["success"] = 0;
