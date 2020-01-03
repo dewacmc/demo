@@ -43,4 +43,13 @@ class HasilModel extends CI_Model
     $query = $this->db->get();
     return $query->result();
   }
+
+  public function getAllpasien($idjadwal){
+    $this->db->select('A.iduser,B.nama, B.jlnklm,B.tgllhr');
+    $this->db->from("{$this->jadwal_d} A");
+    $this->db->join("{$this->client} B", 'A.iduser = B.idpasien');
+    $this->db->where('A.id', $idjadwal);
+    $query = $this->db->get();
+    return $query->result();
+  }
 }
