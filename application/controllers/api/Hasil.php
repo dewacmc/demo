@@ -45,9 +45,11 @@ class Hasil extends REST_Controller {
             $idjw = $this->post("idjadwal");
             $iduser= $this->post("iduser");
             $hadir= $this->post("hadir");
+            $idterapis=$this->post("idterapis");
             $data = array(
                 "hdr" => $hadir,
               );
+              $hasilterapis = $this->MHasil->absendataterapis($idjw,$idterapis,$data);
               $hasilhadir = $this->MHasil->absendata($idjw,$iduser,$data);
             if($hasilhadir){
                 $jadwal["success"] = 1;

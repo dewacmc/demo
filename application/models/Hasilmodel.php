@@ -58,4 +58,10 @@ class HasilModel extends CI_Model
     $this->db->where('iduser', $iduser);
     return $this->db->update($this->jadwal_d,$data);
   }
+
+  public function absendataterapis($idjadwal,$iduser,$data){
+    $this->db->where('id', $idjadwal);
+    $this->db->where('idterapis', $iduser);
+    return $this->db->update($this->jadwal_d1,$data);
+  }
 }
