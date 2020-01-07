@@ -57,12 +57,12 @@ class JadwalModel extends CI_Model
     $curMonth = date('F');
     $curYear  = date('Y');
     $timestamp    = strtotime($curMonth.' '.$curYear);
-    $first = date('Y-m-01 00:00:00', $timestamp);
-    $last  = date('Y-m-t 12:59:59', $timestamp); 
-            echo "<pre>";
-            print_r($first);
-            print_r($last);
-            echo "<pre>";
+    $first = date('Y-m-01 00:00:00', $timestamp); // awal bulan
+    $last  = date('Y-m-t 12:59:59', $timestamp); // akhir bulan
+            // echo "<pre>";
+            // print_r($first);
+            // print_r($last);
+            // echo "<pre>";
     $this->db->select('A.id, CONCAT(G.nama,": ",D.name,"- ",E.nama ) AS title,A.start, A.end, E.nama as cabang, G.nama as terapis, D.name as room, D.color');
     $this->db->from("{$this->jadwal_h} A");
     $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
@@ -122,12 +122,12 @@ class JadwalModel extends CI_Model
     return $query->result();
   }
 
-  public function getthisweek($idterapis){
-    $curdate=date('Y-M-d');
+  public function getthisweek($terapis){
+    $curdate=date('Y-m-d');
     //cari data awal minggu dan akhir minggu
-    $akhir = date('Y-M-d',strtotime("+7 day"));
-    $awal = date('Y-M-d',strtotime("-7 day"));
-    $this->db->select('A.id, CONCAT(G.nama,": ",D.name,"- ",E.nama ) AS title,A.start, A.end, E.nama as cabang, G.nama as terapis, D.name as room, D.color');
+    $awal= date("Y-m-d", strtotime('monday this week', strtotime($curdate)));   // hari senin di minggu berjalan
+    $akhir= date("Y-m-d", strtotime('sunday this week', strtotime($curdate)));  // hari minggu di minggu berjalan
+    $this->db->select('A.id, A.start, A.end, E.nama as cabang, G.nama as terapis, D.name as room, D.color');
     $this->db->from("{$this->jadwal_h} A");
     $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
     $this->db->join("{$this->room} D", 'A.idroom = D.idroom');
