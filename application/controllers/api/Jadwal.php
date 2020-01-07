@@ -132,4 +132,22 @@ class Jadwal extends REST_Controller {
         $this->response($filters, REST_Controller::HTTP_OK);
     }
 
+    public function getallweek_post(){
+        $terapis = $this->post("terapis");
+        $thisweek = $this->Mjadwal->getthisweek($terapis);
+        $lastweek = $this->Mjadwal->getlastweek($terapis);
+        $nextweek = $this->Mjadwal->getnetweek($terapis);
+        if (count($filterdata) == 0) {
+            $filters["message"] = "Tidak ada data Ruangan untuk saat ini";
+            $filters["success"] = 0;
+        }else{
+            $filters["success"] = 1;
+            $filters["message"] = "success show list all rooms";
+        }
+            $filters["thisweek"] = $thisweek;
+            $filters["lastweek"] = $lastweek;
+            $filters["nextweek"] = $nextweek;
+        $this->response($filters, REST_Controller::HTTP_OK);
+    }
+
 }
