@@ -161,4 +161,19 @@ class JadwalModel extends CI_Model
     $query = $this->db->get();
     return $query->result();
   }
+
+  public funtion getstscurrentmonth($terapis,$tglcari){
+    $time = strtotime($tglcari);
+    $curMonth=date('m',$time);
+    $curYear=date('Y',$time);
+    $this->db->select('year(A.start) as year,month(A.start) -1 as month,day(A.start) as date');
+    $this->db->from("{$this->jadwal_h} A");
+    $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
+    $this->db->join("{$this->terapis} G", 'C.idterapis = G.id');
+    $this->db->where('G.googleid', $terapis);
+    $this->db->where('MONTH(A.start)', $curMonth);
+    $this->db->where('YEAR(A.start)', $curYear);
+    $query = $this->db->get();
+    return $query->result();
+  }
 }
