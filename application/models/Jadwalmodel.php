@@ -28,6 +28,7 @@ class JadwalModel extends CI_Model
     $this->db->join("{$this->cabang} E", 'A.idcab = E.id');
     $this->db->join("{$this->client} F", 'B.iduser = F.idpasien');
     $this->db->join("{$this->terapis} G", 'C.idterapis = G.id');
+    $this->db->order_by("A.start", "asc");
     $query = $this->db->get();
     return $query->result();
   }
@@ -156,6 +157,7 @@ class JadwalModel extends CI_Model
     $this->db->join("{$this->terapis} G", 'C.idterapis = G.id');
     $this->db->where('G.googleid', $terapis);
     $this->db->where('date(A.start)', $datecari);
+    $this->db->order_by("A.start", "asc");
     $query = $this->db->get();
     return $query->result();
   }
