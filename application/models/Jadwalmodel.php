@@ -162,7 +162,7 @@ class JadwalModel extends CI_Model
     return $query->result();
   }
 
-  public funtion getstscurrentmonth($terapis,$tglcari){
+  public function getstscurrentmonth($terapis,$tglcari){
     $time = strtotime($tglcari);
     $curMonth=date('m',$time);
     $curYear=date('Y',$time);
