@@ -151,4 +151,20 @@ class Jadwal extends REST_Controller {
         $this->response($filters, REST_Controller::HTTP_OK);
     }
 
+    public function getbydate_post(){
+        $terapis = $this->post("terapis");
+        $tglcari= $this->post("tglcari");
+
+        $filterdata = $this->Mjadwal->getFiterdate($terapis,$tglcari);
+        if (count($filterdata) == 0) {
+            $filters["message"] = "Tidak ada data untuk saat ini";
+            $filters["success"] = 0;
+        }else{
+            $filters["success"] = 1;
+            $filters["message"] = "success show list all Jadwal";
+        }
+            $filters["data"] = $filterdata;
+        $this->response($filters, REST_Controller::HTTP_OK);
+    }
+
 }
