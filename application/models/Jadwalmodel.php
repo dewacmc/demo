@@ -141,8 +141,13 @@ class JadwalModel extends CI_Model
   }
 
   public function getFiterdate($terapis,$tglcari){
-    $time = strtotime($tglcari);
-    $datecari = date('Y-m-d', $time);
+    if($tglcari){
+      $time = strtotime($tglcari);
+      $datecari = date('Y-m-d', $time);
+    }else{
+      $datecari=date('Y-m-d');
+    }
+    
     $this->db->select('A.id, A.start, A.end, E.nama as cabang, G.nama as terapis, D.name as room, D.color');
     $this->db->from("{$this->jadwal_h} A");
     $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
