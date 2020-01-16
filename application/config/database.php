@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'cmclearn_dewajadwal',
-	'password' => 'anakdewa0508',
-	'database' => 'cmclearn_jadwal',
+	'hostname' => '103.56.149.160',
+	'username' => 'cmclearning',
+	'password' => 'AnakDewa@0508',
+	'database' => 'cmclearning',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
