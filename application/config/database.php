@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'vindotextile.com',
-	'username' => 'cmclearning',
-	'password' => 'AnakDewa@0508',
-	'database' => 'cmclearning',
+	'hostname' => 'localhost',
+	'username' => 'cmclearn_dewajadwal',
+	'password' => 'anakdewa0508',
+	'database' => 'cmclearn_jadwal',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
