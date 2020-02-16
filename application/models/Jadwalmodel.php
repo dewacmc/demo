@@ -182,7 +182,7 @@ class JadwalModel extends CI_Model
       $datecari=date('Y-m-d');
     }
     
-    $this->db->select('A.id, A.start, A.end, E.nama as cabang, G.nama as terapis, D.name as room, D.color,G.google.id');
+    $this->db->select('A.id, A.start, A.end, E.nama as cabang, G.nama as terapis, D.name as room, D.color,G.googleid');
     $this->db->from("{$this->jadwal_h} A");
     $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
     $this->db->join("{$this->room} D", 'A.idroom = D.idroom');
