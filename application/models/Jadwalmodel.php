@@ -164,7 +164,7 @@ class JadwalModel extends CI_Model
       $jadwalid = $item->id;
       $terapisid= $item->googleid;
       $this->db->select('B.id,B.iduser,F.nama');
-      $this->db->join("{$this->jadwal_d} B");
+      $this->db->from("{$this->jadwal_d} B");
       $this->db->join("{$this->client} F", 'B.iduser = F.idpasien');
       $this->db->where('id', $jadwalid);
       $query1 = $this->db->get();
