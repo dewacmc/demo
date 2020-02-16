@@ -162,6 +162,8 @@ class Jadwal extends REST_Controller {
             $filters["data"] = $filterdata;
         }else{
             foreach($filterdata as $key=>$item){
+
+                $filterdatasiswa = $this->Mjadwal->getAlldata_jadwal($item->id,$item->googleid);
                 $induk[]=array(
                     "id"=> $item->id,
                     "start"=> $item->start,
@@ -172,6 +174,7 @@ class Jadwal extends REST_Controller {
                     "color"=> $item->color,
                     "googleid"=> $item->googleid,
                 );
+                array_push($induk, $filterdatasiswa);
             }
             
             $filters["success"] = 1;
