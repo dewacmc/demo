@@ -229,26 +229,13 @@ class JadwalModel extends CI_Model
 
 
   public function getAlldata_jadwal($idjadwal,$idterapis){
-    // $curMonth = date('F');
-    // $curYear  = date('Y');
-    // $timestamp    = strtotime($curMonth.' '.$curYear);
-    // $first = date('Y-m-01 00:00:00', $timestamp);
-    // $last  = date('Y-m-t 12:59:59', $timestamp); 
-    $this->db->select('A.id,A.start, I.nama as product, A.end, E.nama as cabang,G.id as idterpis, G.nama as terapis, D.name as room');
-    $this->db->from("{$this->jadwal_h} A");
-    $this->db->join("{$this->jadwal_d} B", 'A.id = B.id');
-    $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
-    $this->db->join("{$this->room} D", 'A.idroom = D.idroom');
-    $this->db->join("{$this->cabang} E", 'A.idcab = E.id');
-    $this->db->join("{$this->terapis} G", 'C.idterapis = G.id');
-    $this->db->join("{$this->order} H", 'B.idord = H.idord');
-    $this->db->join("{$this->product} I", 'H.idprod = I.idprod');
-    $this->db->where('A.id', $idjadwal);
-    $this->db->where('G.googleid', $idterapis);
-    $this->db->group_by(array("G.id","I.nama","D.name","E.nama","start","end","G.nama"));
 
-    // $this->db->where('A.start BETWEEN "'. date('Y-m-d', strtotime($first)). '" and "'. date('Y-m-d', strtotime($last)).'"');
-    $query = $this->db->get();
-    return $query->result();
+    $this->db->select('B.id,B.iduser,F.nama');
+    $this->db->from("{$this->jadwal_d} B");
+    $this->db->join("{$this->client} F", 'B.iduser = F.idpasien');
+    $this->db->where('id', $idjadwal);
+    $query1 = $this->db->get();
+    $result = $query1->result_array();
+    return $query1->result();
   }
 }
