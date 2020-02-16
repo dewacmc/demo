@@ -163,7 +163,7 @@ class Jadwal extends REST_Controller {
         }else{
             foreach($filterdata as $key=>$item){
                 echo "<pre>";
-                print_r($filterdata->id);
+                print_r($item->id);
                 echo "<pre>";
             }
             
