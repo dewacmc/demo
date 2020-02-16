@@ -154,7 +154,7 @@ class Jadwal extends REST_Controller {
     public function getbydate_post(){
         $terapis = $this->post("terapis");
         $tglcari= $this->post("tglcari");
-
+        $induk = array();
         $filterdata = $this->Mjadwal->getFiterdate($terapis,$tglcari);
         if (count($filterdata) == 0) {
             $filters["message"] = "Tidak ada data untuk saat ini";
@@ -162,13 +162,21 @@ class Jadwal extends REST_Controller {
             $filters["data"] = $filterdata;
         }else{
             foreach($filterdata as $key=>$item){
-                echo "<pre>";
-                print_r($item->id);
-                echo "<pre>";
+                $induk[]=array(
+                    "id"=> $item->id,
+                    "start"=> $item->start,
+                    "end"=> $item->end,
+                    "cabang"=> $item->cabang,
+                    "terapis"=> $item->terapis,
+                    "room"=>$item->room,
+                    "color"=> $item->color,
+                    "googleid"=> $item->googleid,
+                );
             }
             
             $filters["success"] = 1;
             $filters["message"] = "success show list all Jadwal";
+            $filters["data"] = $induk;
         }
             //$filters["data"] = $filterdata;
         $this->response($filters, REST_Controller::HTTP_OK);
