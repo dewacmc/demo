@@ -162,10 +162,10 @@ class JadwalModel extends CI_Model
     {
         foreach($query->result() as $key=>$item){
           $jadwalid = $item->id;
-          $terapisid= $item->googleid;
+          //$terapisid= $item->googleid;
             echo "<pre>";
             print_r($jadwalid);
-            print_r($terapisid);
+            //print_r($terapisid);
             echo "<pre>";
           $this->db->select('B.id,B.iduser,F.nama');
           $this->db->from("{$this->jadwal_d} B");
