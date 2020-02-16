@@ -10,6 +10,9 @@ class JadwalModel extends CI_Model
   public $jadwal_h= 'cmc_jadwal_h';
   public $jadwal_d= 'cmc_jadwal_d';
   public $jadwal_d1= 'cmc_jadwal_d1';
+  public $order= 'order_siswa';
+  public $product= 'prod';
+
 
   public function __construct()
   {
