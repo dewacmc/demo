@@ -173,14 +173,15 @@ class Jadwal extends REST_Controller {
                     "room"=>$item->room,
                     "color"=> $item->color,
                     "googleid"=> $item->googleid,
+                    "murid" => $filterdatasiswa,
                 );
-                $filters["data"] = $induk;
-                $filters["data"]["murid"] = $filterdatasiswa;
+                // $filters["data"] = $induk;
+                // $filters["data"]["murid"] = $filterdatasiswa;
             }
             
             $filters["success"] = 1;
             $filters["message"] = "success show list all Jadwal";
-            //$filters["data"] = $induk;
+            $filters["data"] = $induk;
         }
             //$filters["data"] = $filterdata;
         $this->response($filters, REST_Controller::HTTP_OK);
