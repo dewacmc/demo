@@ -158,28 +158,29 @@ class JadwalModel extends CI_Model
     $this->db->where('date(A.start)', $datecari);
     $this->db->order_by("A.start", "asc");
     $query = $this->db->get();
-
-    
-    foreach($query->result() as $key=>$item){
-      $jadwalid = $item->id;
-      $terapisid= $item->googleid;
-      $this->db->select('B.id,B.iduser,F.nama');
-      $this->db->from("{$this->jadwal_d} B");
-      $this->db->join("{$this->client} F", 'B.iduser = F.idpasien');
-      $this->db->where('id', $jadwalid);
-      $query1 = $this->db->get();
-      $result = $query1->result_array();
-      $data[]=array(
-            "id"=> $item->id,
-            "start"=> $item->start,
-            "end"=> $item->end,
-            "cabang"=> $item->cabang,
-            "terapis"=> $item->terapis,
-            "room"=>$item->room,
-            "color"=> $item->color,
-            "googleid"=> $item->googleid,
-      );
-      $data[$key]["murid"]= $result;
+    if(!empty($query))
+    {
+        foreach($query->result() as $key=>$item){
+          $jadwalid = $item->id;
+          $terapisid= $item->googleid;
+          $this->db->select('B.id,B.iduser,F.nama');
+          $this->db->from("{$this->jadwal_d} B");
+          $this->db->join("{$this->client} F", 'B.iduser = F.idpasien');
+          $this->db->where('id', $jadwalid);
+          $query1 = $this->db->get();
+          $result = $query1->result_array();
+          $data[]=array(
+                "id"=> $item->id,
+                "start"=> $item->start,
+                "end"=> $item->end,
+                "cabang"=> $item->cabang,
+                "terapis"=> $item->terapis,
+                "room"=>$item->room,
+                "color"=> $item->color,
+                "googleid"=> $item->googleid,
+          );
+          $data[$key]["murid"]= $result;
+        }
     }
   }
 
