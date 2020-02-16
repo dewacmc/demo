@@ -158,7 +158,7 @@ class JadwalModel extends CI_Model
     $this->db->where('date(A.start)', $datecari);
     $this->db->order_by("A.start", "asc");
     $query = $this->db->get();
-    $query->result_array();
+
     
     foreach($query->result() as $key=>$item){
       $jadwalid = $item->id;
