@@ -174,7 +174,7 @@ class Jadwal extends REST_Controller {
                     "color"=> $item->color,
                     "googleid"=> $item->googleid,
                 );
-                $filters[$key]["data"] = $induk;
+                $filters["data"] = $induk;
                 $filters[$key]["murid"] = $filterdatasiswa;
             }
             
