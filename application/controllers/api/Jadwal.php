@@ -166,6 +166,7 @@ class Jadwal extends REST_Controller {
             $filters["data"] = $filterdata;
         $this->response($filters, REST_Controller::HTTP_OK);
     }
+    
     public function getstsjadwal_post(){
         $terapis = $this->post("terapis");
         $tglcari= $this->post("tglcari");

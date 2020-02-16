@@ -140,6 +140,39 @@ class JadwalModel extends CI_Model
     return $query->result();
     
   }
+  public function getFiterdate123($terapis,$tglcari){
+    if($tglcari){
+      $time = strtotime($tglcari);
+      $datecari = date('Y-m-d', $time);
+    }else{
+      $datecari=date('Y-m-d');
+    }
+    
+    $this->db->select('A.id, A.start, A.end, E.nama as cabang, G.nama as terapis, D.name as room, D.color,C.idterapis');
+    $this->db->from("{$this->jadwal_h} A");
+    $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
+    $this->db->join("{$this->room} D", 'A.idroom = D.idroom');
+    $this->db->join("{$this->cabang} E", 'A.idcab = E.id');
+    $this->db->join("{$this->terapis} G", 'C.idterapis = G.id');
+    $this->db->where('G.googleid', $terapis);
+    $this->db->where('date(A.start)', $datecari);
+    $this->db->order_by("A.start", "asc");
+    $query = $this->db->get();
+    //return $query->result();
+    foreach($query->result() as $key=>$item){
+      $jadwalid = $item->id;
+      $terapisid= $item->idterapis;
+      $this->db->select('A.id,F.nama');
+      $this->db->from("{$this->jadwal_h} A");
+      $this->db->join("{$this->jadwal_d} B", 'A.id = B.id');
+      $this->db->join("{$this->client} F", 'B.iduser = F.idpasien');
+      $this->db->where('merk', $sportsId);
+      $this->db->group_by("jenis");
+      $query1 = $this->db->get();
+      $result = $query1->result_array();
+
+    }
+  }
 
   public function getFiterdate($terapis,$tglcari){
     if($tglcari){
@@ -149,7 +182,7 @@ class JadwalModel extends CI_Model
       $datecari=date('Y-m-d');
     }
     
-    $this->db->select('A.id, A.start, A.end, E.nama as cabang, G.nama as terapis, D.name as room, D.color');
+    $this->db->select('A.id, A.start, A.end, E.nama as cabang, G.nama as terapis, D.name as room, D.color,C.idterapis');
     $this->db->from("{$this->jadwal_h} A");
     $this->db->join("{$this->jadwal_d1} C", 'A.id = C.id');
     $this->db->join("{$this->room} D", 'A.idroom = D.idroom');
