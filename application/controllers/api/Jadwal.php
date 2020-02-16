@@ -156,7 +156,7 @@ class Jadwal extends REST_Controller {
         $tglcari= $this->post("tglcari");
 
         $filterdata = $this->Mjadwal->getFiterdate123($terapis,$tglcari);
-        if (count($filterdata) == 0) {
+        if (!$filterdata) {
             $filters["message"] = "Tidak ada data untuk saat ini";
             $filters["success"] = 0;
         }else{
