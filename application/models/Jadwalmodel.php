@@ -223,6 +223,7 @@ class JadwalModel extends CI_Model
     $this->db->where('G.googleid', $terapis);
     $this->db->where('MONTH(A.start)', $curMonth);
     $this->db->where('YEAR(A.start)', $curYear);
+    $this->db->group_by(array(""));
     $query = $this->db->get();
     return $query->result();
   }
